@@ -19,11 +19,12 @@ app.use(express.static(path.resolve(__dirname, '../public')));
 //configuracion global de rutas
 app.use(require('./routes/index'));
 
-
+//configuracion de mongo
 mongoose.connect(process.env.URLDB, {
     useCreateIndex: true,
     useNewUrlParser: true,
-    useUnifiedTopology: true
+    useUnifiedTopology: true,
+    useFindAndModify: false
 }, (err, res) => {
     if (err) throw err;
     console.log('Base de datos online');
